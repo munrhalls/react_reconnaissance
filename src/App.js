@@ -1,19 +1,16 @@
+import Header from './components/Header';
+import Tasks from './components/Tasks';
+
 function App() {
-  const name = 'Brad';
-  const y = 5;
-  const x = 5;
-  const multiplier = 10;
 
   return (
-    <div className="App">
-      <h1>Hello From React</h1>
-      <h2>{y + x}</h2>
-      <h3>{name}</h3>
-      <h4>{x * multiplier}, {y * multiplier}</h4>
-      <h5>{name}</h5>
-      <h6>{multiplier} multiplier</h6>
+    <div className="App container">
+      <Header title="Task Tracker" />
+      <Tasks listTitle="Tuesday tasks" />
+      <Tasks listTitle="Wendesday tasks" />
+      <Tasks listTitle="Thursday tasks" />
     </div>
   );
-} 
+}
 
 export default App;
