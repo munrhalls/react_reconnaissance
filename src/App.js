@@ -32,15 +32,19 @@ const App = () => {
     ]
   )
 
-  function deleteTask(id) {
+  const deleteTask = (id) => {
     setTasks(tasks.filter((task) => task.id !== id));
+  }
+
+  const toggleTask = (id) => {
+    console.log(id)
   }
 
   return (
     <div className="App container">
       <Header title="Task Tracker" />
       {tasks.length > 0 ?
-        <Tasks tasks={tasks} onDelete={deleteTask} />
+        <Tasks tasks={tasks} onDelete={deleteTask} toggleTask={toggleTask}/>
         :
         ('No Tasks To Show')
       }
