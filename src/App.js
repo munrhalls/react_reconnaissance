@@ -37,14 +37,21 @@ const App = () => {
   }
 
   const toggleTask = (id) => {
-    console.log(id)
+    setTasks(tasks.map((task) => {
+      if (task.id === id) {
+        task.reminder = !task.reminder;
+        return task;
+      } else {
+        return task;
+      }
+    }));
   }
 
   return (
     <div className="App container">
       <Header title="Task Tracker" />
       {tasks.length > 0 ?
-        <Tasks tasks={tasks} onDelete={deleteTask} toggleTask={toggleTask}/>
+        <Tasks tasks={tasks} onDelete={deleteTask} toggleTask={toggleTask} />
         :
         ('No Tasks To Show')
       }
