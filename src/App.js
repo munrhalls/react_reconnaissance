@@ -1,14 +1,49 @@
+import { useState } from 'react';
 import Header from './components/Header';
 import Tasks from './components/Tasks';
 
-function App() {
+const App = () => {
+  const [tasks, setTasks] = useState(
+    [
+      {
+        id: 1,
+        text: 'Workout',
+        day: 'August 9th at 8:00am',
+        reminder: true,
+      },
+      {
+        id: 2,
+        text: 'Clean room',
+        day: 'August 9th at 8:00am',
+        reminder: true,
+      },
+      {
+        id: 3,
+        text: 'Cold shower',
+        day: 'August 9th at 8:00am',
+        reminder: true,
+      },
+      {
+        id: 4,
+        text: 'Shop food',
+        day: 'August 9th at 8:00am',
+        reminder: true,
+      },
+    ]
+  )
+
+  function deleteTask(id) {
+    setTasks(tasks.filter((task) => task.id !== id));
+  }
 
   return (
     <div className="App container">
       <Header title="Task Tracker" />
-      <Tasks listTitle="Tuesday tasks" />
-      <Tasks listTitle="Wendesday tasks" />
-      <Tasks listTitle="Thursday tasks" />
+      {tasks.length > 0 ?
+        <Tasks tasks={tasks} onDelete={deleteTask} />
+        :
+        ('No Tasks To Show')
+      }
     </div>
   );
 }

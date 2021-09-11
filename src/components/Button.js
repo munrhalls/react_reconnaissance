@@ -1,5 +1,4 @@
 const Button = ({ color, text, onClick }) => {
-
   return (
     <header>
       <button
