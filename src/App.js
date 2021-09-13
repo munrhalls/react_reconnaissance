@@ -4,6 +4,7 @@ import Tasks from './components/Tasks';
 import AddTask from './components/AddTask';
 
 const App = () => {
+  const [isAddTaskShown, setIsAddTaskShown] = useState(false);
   const [tasks, setTasks] = useState(
     [
       {
@@ -33,6 +34,17 @@ const App = () => {
     ]
   )
 
+  const addTask = (task, day, reminder) => {
+    const newTask = {
+      id: tasks.length + 1,
+      text: task,
+      day: day,
+      reminder: reminder
+    }
+    const newTasks = [...tasks, newTask];
+    setTasks(newTasks);
+  }
+
   const deleteTask = (id) => {
     setTasks(tasks.filter((task) => task.id !== id));
   }
@@ -48,15 +60,19 @@ const App = () => {
     }));
   }
 
+  const toggleAddTask = () => {
+    setIsAddTaskShown(!isAddTaskShown);
+  }
+
   return (
     <div className="App container">
-      <Header title="Task Tracker" />
+      <Header title="Task Tracker" toggleAddTask={toggleAddTask} isAddTaskShown={isAddTaskShown}/>
+      {isAddTaskShown ? <AddTask addTask={addTask} /> : ''}
       {tasks.length > 0 ?
         <Tasks tasks={tasks} onDelete={deleteTask} toggleTask={toggleTask} />
         :
         ('No Tasks To Show')
       }
-      <AddTask />
     </div>
   );
 }

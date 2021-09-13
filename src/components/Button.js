@@ -1,8 +1,8 @@
-const Button = ({ color, text, onClick }) => {
+const Button = ({ color, text, toggleAddTask }) => {
   return (
     <header>
       <button
-        onClick={onClick}
+        onClick={toggleAddTask}
         style={{ backgroundColor: color }} className='btn'>
         {text}
       </button>
